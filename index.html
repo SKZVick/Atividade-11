@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+body{
+    background-color: black;
+    color: #D9D9D9;
+    border: none;
+    font-family: 'Trebuchet MS';
+    padding-left: 20px;
+    }
+background-image{
+    width: 100%;
+}
+function{
+    font-family: 'Trebuchet MS';
+}
+input{
+    align-content: center;
+}
+.calculator__keys { 
+  display: grid; 
+}
+    .fundo{
+    background-image:  rgb(0, 0, 0);
+    height: 10vh;
+    color: #d9d9d9;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+}
+
+.calculadora{
+    position: absolute;
+    background-color: rgba(102, 102, 102, 0.8);
+    top: 65%;
+    left: 13%;
+    transform: translate(-50%,-50%);
+    border-radius: 15px;
+    padding: 15px;
+}
+.botao{
+    width: 50px;
+    height: 50px;
+    font-size: 25px;
+    cursor: pointer;
+    margin: 3px;
+    background-color: rgb(31, 31, 31);
+    border: none;
+    color: white;
+}
+.botao:hover{
+    background-color: black;
+}
+#resultado{
+    width: 207px;
+    background-color: white;
+    height: 30px;
+    margin: 5px;
+    font-size: 25px;
+    color: black;
+    text-align: right;
+    padding: 5px;
+}
+</style>
+
+
+
+
+<body>
+    
+    <h1>Seja bem vindo(a)</h1>
+    <input type="text" id="nome" placeholder="Digite seu nome aqui ">
+    <input type="number" id="idade" value="10" placeholder="Digite sua idade:">
+    <button type="button" id="botao">Ok</button>
+    <script>
+        function mostrarNome(mostrarIdade) {
+            let divNova = document.createElement("div");
+            let inputNome = document.querySelector("#nome");
+            let textoNovo = document.createTextNode(`Bem vindo(a) ${inputNome.value}!`);
+            let inputIdade = document.querySelector("#idade");
+            let textoNew = document.createTextNode(` Você tem ${inputIdade.value} anos.`)
+
+            divNova.appendChild(textoNovo);
+            document.body.appendChild(divNova);
+            divNova.appendChild(textoNew);
+            document.body.appendChild(divNova);
+        }
+        let botaoOk = document.querySelector("#botao")
+        botaoOk.onclick = mostrarNome;
+        botaoOk.onclick = mostrarIdade;
+    </script>
+
+<div class="fundo">
+    <div class="calculadora">
+        <h2>Calculadora</i></h2>
+        <p id="resultado"></p>
+            <table>                 
+                <tr>
+                    <td><button class="botao" onclick="back()">↤</td>
+                    <td><button class="botao" onclick="clean()">C</td>
+                    <td><button class="botao" onclick="insert('/')">/</button></td>
+                    <td><button class="botao" onclick="insert('*')">*</button></td>
+                </tr>
+                <tr>
+                    <td><button class="botao" onclick="insert('7')">7</button></td>
+                    <td><button class="botao" onclick="insert('8')">8</button></td>
+                    <td><button class="botao" onclick="insert('9')">9</button></td>
+                    <td><button class="botao" onclick="insert('-')">-</button></td>
+                </tr>
+                <tr>
+                    <td><button class="botao" onclick="insert('4')">4</button></td>
+                    <td><button class="botao" onclick="insert('5')">5</button></td>
+                    <td><button class="botao" onclick="insert('6')">6</button></td>
+                    <td><button class="botao" onclick="insert('+')">+</button></td>
+                </tr>
+                <tr>
+                    <td><button class="botao" onclick="insert('1')">1</button></td>
+                    <td><button class="botao" onclick="insert('2')">2</button></td>
+                    <td><button class="botao" onclick="insert('3')">3</button></td>
+                    <td rowspan="2"><button class="botao" style="height: 106px;" onclick="calcular()">=</button></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><button class="botao" style="width: 106px;" onclick="insert('0')">0</button></td>
+                    <td><button class="botao" onclick="insert('.')">.</button></td>
+                </tr>
+            </table>
+    </div>
+</div>
+<script>
+    function insert(num){
+    var numero = document.getElementById('resultado').innerHTML;
+    document.getElementById('resultado').innerHTML = numero + num;
+}
+    function clean(){
+    document.getElementById('resultado').innerHTML = ""; 
+}
+   function back(){
+   var resultado = document.getElementById('resultado').innerHTML;
+   document.getElementById('resultado').innerHTML = resultado.substring(0, resultado.length -1);
+}
+  function calcular(){
+  var resultado = document.getElementById('resultado').innerHTML;
+  if(resultado){
+  document.getElementById('resultado').innerHTML = eval(resultado);
+}
+else{
+    document.getElementById('resultado').innerHTML = "Nada..."
+}
+}
+</script>
+
+</body>
+</html>
